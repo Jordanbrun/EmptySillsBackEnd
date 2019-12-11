@@ -41,10 +41,10 @@ def after_request(response):
 def index():
     return 'testing things'
 
-CORS(user, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(user, origins=['http://localhost:3000', 'https://emptysills.herokuapp.com'], supports_credentials=True)
 app.register_blueprint(user, url_prefix='/api/v1/users')
 
-CORS(plant, origins=['http://localhost:3000'], supports_credentials=True)
+CORS(plant, origins=['http://localhost:3000', 'https://emptysills.herokuapp.com'], supports_credentials=True)
 app.register_blueprint(plant, url_prefix='/api/v1/plants')
 
 
