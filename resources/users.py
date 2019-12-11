@@ -53,8 +53,12 @@ def login():
 
 
 @user.route('/<user_id>/', methods=['GET'])
-def current_user(user_id):
+def get_current_user(user_id):
     print(user_id)
-    user = model_to_dict(models.User.get(id=user_id))
-    return jsonify(user)
+
+    try: 
+        user = model_to_dict(models.User.get(id=user_id))
+        return jsonify(user)
+    except:
+        print("things went wrong yo")
 

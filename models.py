@@ -2,6 +2,7 @@ import os
 from peewee import *
 from flask_login import UserMixin
 from playhouse.db_url import connect
+import datetime
 
 if 'ON_HEROKU' in os.environ:
 	DATABASE = connect(os.environ.get('DATABSE_URL'))
@@ -24,7 +25,8 @@ class User(UserMixin, Model):
 		database = DATABASE
 
 class Plant(Model):
-	plant_id = IntegerField
+	plant_id = IntegerField()
+	last_watered = DateTimeField(default=datetime.datetime.now)
 	user = ForeignKeyField(User, backref='plants')  
 
 	class Meta:

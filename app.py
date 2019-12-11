@@ -12,6 +12,7 @@ DEBUG=True
 PORT=8000
 
 app = Flask(__name__)
+CORS(plant)
 
 
 app.secret_key = 'abjkduehdnsiau'
@@ -45,6 +46,9 @@ app.register_blueprint(user, url_prefix='/api/v1/users')
 
 CORS(plant, origins=['http://localhost:3000'], supports_credentials=True)
 app.register_blueprint(plant, url_prefix='/api/v1/plants')
+
+
+CORS(app, origins=['http://localhost:3000'], supports_credentials=True)
 
 
 if 'ON_HEROKU' in os.environ:
